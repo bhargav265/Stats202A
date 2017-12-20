@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#############################################################\n## Stat 202A - Homework 7\n## Author: Hariharan Shanmugavadivel\n## Date : 11/28/17\n## Description: This script implements the lasso\n#############################################################\n\n#############################################################\n## INSTRUCTIONS: Please fill in the missing lines of code\n## only where specified. Do not change function names,\n## function inputs or outputs. You can add examples at the\n## end of the script (in the \"Optional examples\" section) to\n## double-check your work, but MAKE SURE TO COMMENT OUT ALL\n## OF YOUR EXAMPLES BEFORE SUBMITTING.\n##\n## Very important: Do not use the function \"setwd\" anywhere\n## in your code. If you do, I will be unable to grade your\n## work since R will attempt to change my working directory\n## to one that does not exist.\n#############################################################\n\n#####################################\n## Function 1: Lasso solution path ##\n#####################################\n\nmyLasso <- function(X, Y, lambda_all){\n\n  # Find the lasso solution path for various values of\n  # the regularization parameter lambda.\n  #\n  # X: n x p matrix of explanatory variables.\n  # Y: n dimensional response vector\n  # lambda_all: Vector of regularization parameters. Make sure\n  # to sort lambda_all in decreasing order for efficiency.\n  #\n  # Returns a matrix containing the lasso solution vector\n  # beta for each regularization parameter.\n\n  #######################\n  ## FILL IN CODE HERE ##\n  #######################\n  L = length(lambda_all)\n  lambda_all = sort(lambda_all, decreasing = TRUE)\n\n  p = dim(X)[2]\n  X = cbind(rep(1,n),X)\n  T = 10\n  db = matrix(rep(0, p+1), nrow = p+1)\n  beta = matrix(rep(0, p+1), nrow = p+1)\n  beta_all = matrix(rep(0, (p+1)*L), nrow = p+1)\n  R = Y\n  ss = rep(0, p+1)\n  for (j in 1:(p+1))\n    ss[j] = sum(X[, j]^2)\n\n  for (l in 1:L)\n  {\n    lambda = lambda_all[l]\n    for (t in 1:T)\n    {\n      for (j in 2:(p+1))\n      {\n        db = sum(R*X[, j])/ss[j]\n        b = beta[j]+db\n        b=sign(b)*max(0,abs(b)-lambda/ss[j])\n        db=b-beta[j]\n        R=R-X[,j]*db\n        beta[j]=b\n      }\n    }\n    beta_all[, l] = beta\n\n  }\n  ## Function should output the matrix beta_all, the\n  ## solution to the lasso regression problem for all\n  ## the regularization parameters.\n  ## beta_all is (p+1) x length(lambda_all)\n  return(beta_all)\n\n}\n\n# n = 50\n# p = 200\n# s = 10\n# lambda_all = (100:1)*10\n#\n# X = matrix(rnorm(n*p), nrow=n)\n# beta_true = matrix(rep(0, p), nrow = p)\n# beta_true[1:s] = 1:s\n# Y = X %*% beta_true + rnorm(n)\n# beta_all = myLasso(X, Y, lambda_all)\n#\n#\n# L = length(lambda_all)\n# err = rep(0, L)\n# for(l in 1:L)\n# {\n#   err[l] = sum((beta_all[2:(p+1),l]-beta_true)^2)\n# }\n#\n# plot(lambda_all, err, type = 'l',main='LASSO ERROR ESTIMATION',\n#      xlab='Lambda',ylab='Error')\n",
+    "created" : 1511940970804.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1350239602",
+    "id" : "4D2C8B68",
+    "lastKnownWriteTime" : 1511940984,
+    "last_content_update" : 1511940984393,
+    "path" : "D:/UCLA/Fall 2017/STATS202A - Stats Programming/Assignments/Assignment 7/Lasso/Lasso.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

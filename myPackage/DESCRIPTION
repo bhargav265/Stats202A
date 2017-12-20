@@ -1,0 +1,14 @@
+Package: myPackage
+Title: Package for Statistical Computing
+Version: 0.0.0.9000
+Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Description: Package can be used to compute Linear Regression, Logistic Regression, PCA, Ridge regression and Lasso Regression on data sets. Please see function documentation for detailed description.
+Depends: R (>= 3.4.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
+NeedsCompilation: no
+Packaged: 2017-11-29 04:53:34 UTC; vijayravi
+Author: First Last [aut, cre]
+Maintainer: First Last <first.last@example.com>

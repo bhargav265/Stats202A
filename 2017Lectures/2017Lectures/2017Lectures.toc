@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Linear regression: least squares, ridge, Lasso}{1}
+\contentsline {subsection}{\numberline {1.1}Linear Regression}{1}
+\contentsline {subsection}{\numberline {1.2}Gauss-Jordan elimination}{2}
+\contentsline {subsection}{\numberline {1.3}Calculation details}{3}
+\contentsline {subsection}{\numberline {1.4}Matrix calculus}{4}

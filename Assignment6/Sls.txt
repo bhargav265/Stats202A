@@ -1,0 +1,55 @@
+SELECT matchid, player FROM goal 
+  WHERE teamid = 'GER'
+
+SELECT id,stadium,team1,team2
+  FROM game where id = 1012
+
+SELECT player,teamid, stadium, mdate
+  FROM game JOIN goal ON (id=matchid) where teamid = 'GER'
+
+select team1, team2, player 
+from game join goal on (id = matchid)
+where player like 'Mario%'
+
+
+SELECT player, teamid, coach, gtime
+  FROM goal join eteam on teamid = id
+ WHERE gtime<=10
+
+
+select mdate, teamname
+from game join eteam on team1 = eteam.id
+where coach = 'Fernando Santos'
+
+select player
+from game join goal on matchid = id
+where stadium = 'National Stadium, Warsaw'
+
+SELECT distinct player
+from game join goal on id = matchid
+where (team2 = 'GER' or team1 = 'GER') and teamid <> 'GER'
+
+SELECT teamname, count(matchid)
+  FROM eteam JOIN goal ON id=teamid
+ group BY teamname
+
+SELECT stadium, count(matchid)
+  FROM game JOIN goal ON id=matchid
+ group BY stadium
+
+SELECT matchid,mdate, count(matchid)
+  FROM game JOIN goal ON matchid = id 
+ WHERE (team1 = 'POL' OR team2 = 'POL')
+group by matchid, mdate
+
+
+SELECT matchid,mdate, count(matchid)
+  FROM game JOIN goal ON matchid = id 
+ WHERE (teamid = 'GER')
+group by matchid, mdate
+
+SELECT mdate,
+  team1,
+  sum(CASE WHEN teamid=team1 THEN 1 ELSE 0 END) score1, team2, sum(CASE WHEN teamid=team2 THEN 1 ELSE 0 END) score2
+  FROM game left join goal ON matchid = id
+group by matchid, mdate, team1, team2

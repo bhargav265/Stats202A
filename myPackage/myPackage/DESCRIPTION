@@ -1,0 +1,10 @@
+Package: myPackage
+Type: Package
+Title: StatsProgramming
+Version: 0.1.0
+Author: Hariharan Shanmugavadivel
+Maintainer: The package maintainer <shariharan205@gmail.com>
+Description: Implements PCA, Logistic and Linear Regression using QR
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
